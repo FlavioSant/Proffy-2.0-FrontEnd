@@ -12,7 +12,13 @@ import PageHeader from '../../components/PageHeader';
 
 import warningIcon from '../../assets/images/icons/warning.svg';
 
-import './styles.css';
+import {
+  Container,
+  MainContent,
+  MainFooter,
+  FieldSetBlock,
+  ScheduleItem,
+} from './styles';
 
 interface ScheduleItemsProps {
   week_day: number;
@@ -99,23 +105,23 @@ const TeacherForm: React.FC = () => {
   );
 
   return (
-    <div id="page-teacher-form" className="container">
+    <Container className="container">
       <PageHeader
         title="Que incrível que você quer dar aulas."
         description="O primeiro passo é preencher esse formulário de inscrição"
       />
 
-      <main>
+      <MainContent>
         <Form ref={formRef} onSubmit={handleCreateClass}>
-          <fieldset>
+          <FieldSetBlock>
             <legend>Seus dados</legend>
             <Input name="name" label="Nome completo" />
             <Input name="avatar" label="Avatar" />
             <Input name="whatsapp" label="Whatsapp" />
             <Textarea name="bio" label="Biografia" />
-          </fieldset>
+          </FieldSetBlock>
 
-          <fieldset>
+          <FieldSetBlock>
             <legend>Sobre a aula</legend>
             <Select
               name="subject"
@@ -133,9 +139,9 @@ const TeacherForm: React.FC = () => {
               ]}
             />
             <Input name="cost" label="Custo da sua hora por aula" />
-          </fieldset>
+          </FieldSetBlock>
 
-          <fieldset>
+          <FieldSetBlock>
             <legend>
               Horários disponíveis{' '}
               <button type="button" onClick={addNewScheduleItem}>
@@ -145,7 +151,7 @@ const TeacherForm: React.FC = () => {
 
             {scheduleItems.map((_, index) => (
               <Scope key={index} path={`scheduleItems[${index}]`}>
-                <div className="schedule-item">
+                <ScheduleItem>
                   <Select
                     name="week_day"
                     label="Dia da semana"
@@ -161,22 +167,22 @@ const TeacherForm: React.FC = () => {
                   />
                   <Input name="from" label="Das" type="time" />
                   <Input name="to" label="Até" type="time" />
-                </div>
+                </ScheduleItem>
               </Scope>
             ))}
-          </fieldset>
+          </FieldSetBlock>
 
-          <footer>
+          <MainFooter>
             <p>
               <img src={warningIcon} alt="Aviso importante" />
               Importante! <br />
               Preencha todos os dados
             </p>
             <button type="submit">Salvar cadastro</button>
-          </footer>
+          </MainFooter>
         </Form>
-      </main>
-    </div>
+      </MainContent>
+    </Container>
   );
 };
 

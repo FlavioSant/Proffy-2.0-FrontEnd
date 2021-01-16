@@ -10,7 +10,13 @@ import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 
 import api from '../../services/api';
 
-import './styles.css';
+import {
+  Container,
+  Content,
+  LogoContainer,
+  ButtonsContainer,
+  TotalConnections,
+} from './styles';
 
 const Landing: React.FC = () => {
   const [totalConnections, setTotalConnections] = useState<number>(0);
@@ -24,12 +30,12 @@ const Landing: React.FC = () => {
   }, []);
 
   return (
-    <div id="page-landing">
-      <div id="page-landing-content" className="container">
-        <div className="logo-container">
+    <Container>
+      <Content className="container">
+        <LogoContainer>
           <img src={logoImg} alt="Proffy" />
           <h2>Sua plataforma de estudos online.</h2>
-        </div>
+        </LogoContainer>
 
         <img
           src={landingImg}
@@ -37,7 +43,7 @@ const Landing: React.FC = () => {
           className="hero-image"
         />
 
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Link to="/study" className="study">
             <img src={studyIcon} alt="Estudar" />
             Estudar
@@ -47,14 +53,14 @@ const Landing: React.FC = () => {
             <img src={giveClassesIcon} alt="Dar aulas" />
             Dar aulas
           </Link>
-        </div>
+        </ButtonsContainer>
 
-        <span className="total-connections">
+        <TotalConnections>
           Total de {totalConnections} conexões já realizadas{' '}
           <img src={purpleHeartIcon} alt="Coração roxo" />
-        </span>
-      </div>
-    </div>
+        </TotalConnections>
+      </Content>
+    </Container>
   );
 };
 

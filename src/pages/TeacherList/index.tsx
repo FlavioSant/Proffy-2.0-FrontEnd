@@ -8,7 +8,7 @@ import Select from '../../components/Select';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
 import PageHeader from '../../components/PageHeader';
 
-import './styles.css';
+import { Container, MainContent } from './styles';
 
 interface FormData {
   subject: string;
@@ -39,7 +39,7 @@ const TeacherList: React.FC = () => {
   }, []);
 
   return (
-    <div id="page-teacher-list" className="container">
+    <Container className="container">
       <PageHeader title="Estes são os proffys disponíveis.">
         <Form id="search-teachers" ref={formRef} onSubmit={searchTeachers}>
           <Select
@@ -76,12 +76,12 @@ const TeacherList: React.FC = () => {
         </Form>
       </PageHeader>
 
-      <main>
+      <MainContent>
         {teachers.map((teacher: Teacher) => (
           <TeacherItem key={teacher.id} teacher={teacher} />
         ))}
-      </main>
-    </div>
+      </MainContent>
+    </Container>
   );
 };
 
