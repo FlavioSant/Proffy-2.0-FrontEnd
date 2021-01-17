@@ -39,7 +39,7 @@ const TeacherList: React.FC = () => {
   }, []);
 
   return (
-    <Container className="container">
+    <Container>
       <PageHeader title="Estes são os proffys disponíveis.">
         <Form id="search-teachers" ref={formRef} onSubmit={searchTeachers}>
           <Select

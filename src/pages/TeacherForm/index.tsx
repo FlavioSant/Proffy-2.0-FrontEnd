@@ -105,7 +105,7 @@ const TeacherForm: React.FC = () => {
   );
 
   return (
-    <Container className="container">
+    <Container>
       <PageHeader
         title="Que incrível que você quer dar aulas."
         description="O primeiro passo é preencher esse formulário de inscrição"

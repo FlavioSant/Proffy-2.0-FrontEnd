@@ -13,6 +13,7 @@ import api from '../../services/api';
 import {
   Container,
   Content,
+  HeroImage,
   LogoContainer,
   ButtonsContainer,
   TotalConnections,
@@ -31,17 +32,13 @@ const Landing: React.FC = () => {
 
   return (
     <Container>
-      <Content className="container">
+      <Content>
         <LogoContainer>
           <img src={logoImg} alt="Proffy" />
           <h2>Sua plataforma de estudos online.</h2>
         </LogoContainer>
 
-        <img
-          src={landingImg}
-          alt="Plataforma de estudos"
-          className="hero-image"
-        />
+        <HeroImage src={landingImg} alt="Plataforma de estudos" />
 
         <ButtonsContainer>
           <Link to="/study" className="study">

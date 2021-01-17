@@ -4,16 +4,8 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  .page-header .header-content {
-    margin-bottom: 6.4rem;
-  }
-
   @media (min-width: 700px) {
     max-width: 100vw;
-
-    .page-header .header-content {
-      margin-bottom: 0;
-    }
   }
 `;
 
@@ -44,10 +36,10 @@ export const MainFooter = styled.footer`
     font-size: 1.4rem;
     line-height: 2.4rem;
     color: var(--color-text-complement);
-  }
 
-  p img {
-    margin-right: 2rem;
+    img {
+      margin-right: 2rem;
+    }
   }
 
   button {
@@ -76,15 +68,15 @@ export const MainFooter = styled.footer`
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
 
-  p {
-    justify-content: space-between;
-  }
+    p {
+      justify-content: space-between;
+    }
 
-  button {
-    width: 20rem;
-    margin-top: 0;
+    button {
+      width: 20rem;
+      margin-top: 0;
+    }
   }
 `;
 
@@ -96,10 +88,6 @@ export const ScheduleItem = styled.div`
 
     & + div {
       margin-top: 1.4rem;
-    }
-
-    & .input-block {
-      margin-top: 0 !important;
     }
   }
 `;
@@ -122,24 +110,19 @@ export const FieldSetBlock = styled.fieldset`
     width: 100%;
     padding-bottom: 1.6rem;
     border-bottom: 1px solid var(--color-line-in-white);
-  }
 
-  legend button {
-    background: none;
-    border: 0;
-    color: var(--color-primary);
-    font: 700 1.6rem Archivo;
-    cursor: pointer;
-    transition: color 0.2s;
+    button {
+      background: none;
+      border: 0;
+      color: var(--color-primary);
+      font: 700 1.6rem Archivo;
+      cursor: pointer;
+      transition: color 0.2s;
 
-    &:hover {
-      color: var(--color-primary-dark);
+      &:hover {
+        color: var(--color-primary-dark);
+      }
     }
-  }
-
-  &.input-block + .textarea-block,
-  &.select-block + .input-block {
-    margin-top: 2.4rem;
   }
 
   @media (min-width: 700px) {
