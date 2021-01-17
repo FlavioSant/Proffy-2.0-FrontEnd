@@ -1,7 +1,14 @@
-import React, { InputHTMLAttributes, useEffect, useRef } from 'react';
+import React, {
+  InputHTMLAttributes,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { MdErrorOutline } from 'react-icons/md';
 import { useField } from '@unform/core';
 
-import './styles.css';
+import { Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -9,8 +16,15 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<InputProps> = ({ name, label, ...rest }) => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [isFilled, setIsFilled] = useState(false);
+
   const { fieldName, defaultValue, registerField, error } = useField(name);
+
+  const handleInputBlur = useCallback(() => {
+    setIsFilled(!!inputRef.current.value);
+  }, []);
 
   useEffect(() => {
     registerField({
@@ -21,20 +35,24 @@ const Input: React.FC<InputProps> = ({ name, label, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <div>
-      <div className="input-block">
-        <label htmlFor={name}>{label}</label>
+    <Container isErrored={!!error} isFilled={isFilled}>
+      <label htmlFor={name}>
+        {label}
         <input
           ref={inputRef}
+          onBlur={handleInputBlur}
           defaultValue={defaultValue}
           id={name}
           type="text"
-          style={error && { borderColor: '#f34f4f' }}
           {...rest}
         />
-      </div>
-      {error && <span className="error">{error}</span>}
-    </div>
+      </label>
+      {error && (
+        <span>
+          {error} <MdErrorOutline size={20} />
+        </span>
+      )}
+    </Container>
   );
 };
 

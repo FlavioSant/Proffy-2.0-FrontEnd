@@ -22,6 +22,8 @@ export default createGlobalStyle`
     --color-button-text: #ffffff;
     --color-box-base: #ffffff;
     --color-box-footer: #fafafc;
+    --color-input-error: #f34f4f;
+    --color-input-filled: #04d32d;
   }
 
   * {
