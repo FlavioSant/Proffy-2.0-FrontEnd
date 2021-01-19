@@ -14,7 +14,7 @@ import warningIcon from '../../assets/images/icons/warning.svg';
 
 import {
   Container,
-  MainContent,
+  Main,
   MainFooter,
   FieldSetBlock,
   ScheduleItem,
@@ -111,7 +111,7 @@ const TeacherForm: React.FC = () => {
         description="O primeiro passo é preencher esse formulário de inscrição"
       />
 
-      <MainContent>
+      <Main>
         <Form ref={formRef} onSubmit={handleCreateClass}>
           <FieldSetBlock>
             <legend>Seus dados</legend>
@@ -181,7 +181,7 @@ const TeacherForm: React.FC = () => {
             <button type="submit">Salvar cadastro</button>
           </MainFooter>
         </Form>
-      </MainContent>
+      </Main>
     </Container>
   );
 };

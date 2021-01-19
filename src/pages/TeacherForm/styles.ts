@@ -9,17 +9,21 @@ export const Container = styled.div`
   }
 `;
 
-export const MainContent = styled.main`
+export const Main = styled.main`
   background: var(--color-box-base);
   width: 100%;
   max-width: 74rem;
   border-radius: 0.8rem;
-  margin: -3.2rem auto 3.2rem;
+  margin: -2.2rem auto 3.2rem;
   padding-top: 6.4rem;
   overflow: hidden;
 
   label {
     color: var(--color-text-complement);
+  }
+
+  @media (min-width: 700px) {
+    margin-top: -3.6rem;
   }
 `;
 

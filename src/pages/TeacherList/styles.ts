@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100vh;
 
   form {
+    width: 100%;
     margin-top: 3.2rem;
 
     label {
