@@ -1,15 +1,7 @@
 import styled, { css } from 'styled-components';
-
-export interface ContainerProps {
-  isErrored: boolean;
-  isFilled: boolean;
-}
+import { ContainerProps } from '../Input/styles';
 
 export const Container = styled.div<ContainerProps>`
-  & + div {
-    margin-top: 1rem;
-  }
-
   label {
     font-size: 1.4rem;
     position: relative;
@@ -22,19 +14,21 @@ export const Container = styled.div<ContainerProps>`
       position: absolute;
       left: 1.6rem;
       right: 1.6rem;
-      bottom: -1.6rem;
+      bottom: 0.5rem;
     }
   }
 
-  input {
+  textarea {
     width: 100%;
-    height: 5.6rem;
+    height: 16rem;
+    min-height: 8rem;
     margin-top: 0.8rem;
     border: 1px solid var(--color-line-in-white);
     border-radius: 0.8rem;
     background: var(--color-input-background);
     outline: 0;
-    padding: 0 1.6rem;
+    resize: vertical;
+    padding: 1.2rem 1.6rem;
     font: 1.6rem Archivo;
 
     ${(props) =>

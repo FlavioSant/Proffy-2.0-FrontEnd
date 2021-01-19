@@ -5,9 +5,9 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { MdErrorOutline } from 'react-icons/md';
 import { useField } from '@unform/core';
 
+import ErrorMessage from '../ErrorMessage';
 import { Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -47,11 +47,7 @@ const Input: React.FC<InputProps> = ({ name, label, ...rest }) => {
           {...rest}
         />
       </label>
-      {error && (
-        <span>
-          {error} <MdErrorOutline size={20} />
-        </span>
-      )}
+      {error && <ErrorMessage title={error} isFilled={isFilled} />}
     </Container>
   );
 };

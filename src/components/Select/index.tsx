@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import ReactSelect, { OptionTypeBase, Props } from 'react-select';
 import { useField } from '@unform/core';
 
-import './styles.css';
+import ErrorMessage from '../ErrorMessage';
+import { Container } from './styles';
 
 interface SelectProps extends Props<OptionTypeBase> {
   name: string;
@@ -12,7 +13,14 @@ interface SelectProps extends Props<OptionTypeBase> {
 
 const Select: React.FC<SelectProps> = ({ name, label, options, ...rest }) => {
   const selectRef = useRef(null);
+
+  const [isFilled, setIsFilled] = useState(false);
+
   const { fieldName, defaultValue, registerField, error } = useField(name);
+
+  const handleSelectBlur = useCallback(() => {
+    setIsFilled(!selectRef.current.value);
+  }, []);
 
   useEffect(() => {
     registerField({
@@ -34,29 +42,22 @@ const Select: React.FC<SelectProps> = ({ name, label, options, ...rest }) => {
   }, [fieldName, registerField, rest.isMulti]);
 
   return (
-    <div>
-      <div className="select-block">
-        <label htmlFor={name}>{label}</label>
+    <Container isErrored={!!error} isFilled={isFilled}>
+      <label htmlFor={name}>
+        {label}
         <ReactSelect
           ref={selectRef}
           defaultValue={defaultValue}
+          onBlur={handleSelectBlur}
           classNamePrefix="react-select"
           placeholder="Selecione..."
           options={options}
           inputId={name}
-          styles={
-            error && {
-              control: (base) => ({
-                ...base,
-                borderColor: 'red !important',
-              }),
-            }
-          }
           {...rest}
         />
-      </div>
-      {error && <span className="error">{error}</span>}
-    </div>
+      </label>
+      {error && <ErrorMessage title={error} isFilled={isFilled} />}
+    </Container>
   );
 };
 

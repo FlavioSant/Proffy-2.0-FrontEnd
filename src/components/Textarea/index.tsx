@@ -1,7 +1,14 @@
-import React, { TextareaHTMLAttributes, useEffect, useRef } from 'react';
+import React, {
+  TextareaHTMLAttributes,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useField } from '@unform/core';
 
-import './styles.css';
+import ErrorMessage from '../ErrorMessage';
+import { Container } from './styles';
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string;
@@ -9,8 +16,15 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const Textarea: React.FC<TextareaProps> = ({ name, label, ...rest }) => {
-  const textAreaRef = useRef(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  const [isFilled, setIsFilled] = useState(false);
+
   const { fieldName, defaultValue, registerField, error } = useField(name);
+
+  const handleTextAreaBlur = useCallback(() => {
+    setIsFilled(!!textAreaRef.current.value);
+  }, []);
 
   useEffect(() => {
     registerField({
@@ -21,19 +35,19 @@ const Textarea: React.FC<TextareaProps> = ({ name, label, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <div>
-      <div className="textarea-block">
-        <label htmlFor={name}>{label}</label>
+    <Container isErrored={!!error} isFilled={isFilled}>
+      <label htmlFor={name}>
+        {label}
         <textarea
           ref={textAreaRef}
           defaultValue={defaultValue}
+          onBlur={handleTextAreaBlur}
           id={name}
-          style={error && { borderColor: '#f34f4f' }}
           {...rest}
         />
-      </div>
-      {error && <span className="error">{error}</span>}
-    </div>
+      </label>
+      {error && <ErrorMessage title={error} isFilled={isFilled} />}
+    </Container>
   );
 };
 

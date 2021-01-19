@@ -23,7 +23,6 @@ export default createGlobalStyle`
     --color-box-base: #ffffff;
     --color-box-footer: #fafafc;
     --color-input-error: #f34f4f;
-    --color-input-filled: #04d32d;
   }
 
   * {
@@ -59,11 +58,6 @@ export default createGlobalStyle`
   .container {
     width: 90vw;
     max-width: 700px;
-  }
-
-  .error {
-    color: #f34f4f;
-    font-size: 1.3rem;
   }
 
   @media (min-width: 700px) {

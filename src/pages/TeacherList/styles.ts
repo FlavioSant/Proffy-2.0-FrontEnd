@@ -11,6 +11,10 @@ export const Container = styled.div`
       color: var(--color-text-in-primary);
     }
 
+    .react-select__option {
+      color: var(--color-text-complement);
+    }
+
     button {
       width: 100%;
       height: 5.6rem;
@@ -42,6 +46,10 @@ export const Container = styled.div`
       column-gap: 16px;
       position: absolute;
       bottom: -28px;
+
+      button {
+        margin-top: 4.2rem;
+      }
     }
   }
 `;

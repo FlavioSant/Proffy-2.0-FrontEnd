@@ -85,10 +85,6 @@ export const ScheduleItem = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     column-gap: 1.6rem;
-
-    & + div {
-      margin-top: 1.4rem;
-    }
   }
 `;
 
