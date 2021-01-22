@@ -12,7 +12,7 @@ import { Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  label: string;
+  label?: string;
 }
 
 const Input: React.FC<InputProps> = ({ name, label, ...rest }) => {
